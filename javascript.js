@@ -3,9 +3,11 @@ let currentNumber = "0";
 let previousNumber = null;
 let symbol = null;
 
-let operate = function() {
-    console.log("Run operation with " + symbol);
+const add =  function(x,y) {
+    let total = Number(x) + Number(y)
+    return total.toString();
 }
+
 
 let total = document.querySelector("#total");
 
@@ -14,6 +16,21 @@ const update = function() {
 }
 
 update();
+
+const operate = function() {
+    console.log("previous number is: " + previousNumber);
+    console.log("current number is :" + currentNumber);
+    switch (symbol) {
+        case "+":
+            currentNumber = add(previousNumber, currentNumber);
+            break;
+    
+        default:
+            break;
+    }
+    console.log("Run operation with " + symbol);
+    update();
+}
 const keyEvent  = function(key) {
    
 }
@@ -26,37 +43,62 @@ Array.from(buttons).forEach(button => {
         let buttonName = buttonTarget.name;
         switch (buttonName) {
             case "number":
-                if(currentNumber == "0" || currentNumber == "") {
-                    currentNumber = buttonTarget.textContent;
-                } else {
-                    currentNumber = currentNumber + buttonTarget.textContent;
-                }
+                appendNumber(buttonTarget);
                 break;
 
             case "symbol":
-                if(symbol == null) {
-                    symbol = buttonTarget.textContent;
-                } else {
-                    operate();
-                    symbol = buttonTarget.textContent;
-                    console.log("New updated symbol" + symbol);
-                }
-
+                updateSymbol(buttonTarget);
                 break;
 
             case "clear":
-                currentNumber = "0";
-                previousNumber = null;
-                symbol = null; 
+                clearAll();
                 break;
+
+            case "equals":
+                equals();
         
             default:
                 break;
         }
-        update();
+        
     })
 })
 
+function updateSymbol(buttonTarget) {
+    if (symbol == null) {
+        previousNumber = currentNumber;
+        currentNumber = "0";
+        symbol = buttonTarget.textContent;
+    } else {
+        operate();
+        previousNumber = currentNumber;
+        currentNumber = "0";
+        symbol = buttonTarget.textContent;
+        console.log("New updated symbol" + symbol);
+    }
+}
 
+function appendNumber(buttonTarget) {
+    if (currentNumber == "0" || currentNumber == "") {
+        currentNumber = buttonTarget.textContent;
+    } else {
+        currentNumber = currentNumber + buttonTarget.textContent;
+    }
+    update();
+}
 
+function equals() {
+    if (previousNumber !== null && symbol !== null) {
+        operate();
+        symbol = null;
+        previousNumber = null;
+    }
+}
+
+function clearAll() {
+    currentNumber = "0";
+    previousNumber = null;
+    symbol = null;
+    update();
+}
 
