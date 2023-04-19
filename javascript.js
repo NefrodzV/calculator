@@ -8,15 +8,40 @@ const add =  function(x,y) {
     return total.toString();
 }
 
+<<<<<<< HEAD
+=======
+const multiply = function(x,y) {
+    let total = Number(x) * Number(y);
+    return total.toString();
+}
+
+const substract = function(x,y) {
+    let total = parseFloat(x) - parseFloat(y);
+    console.log(total);
+    return total.toString();
+}
+
+const divide = function(x,y) {
+    let total = Number(x) / Number(y);
+    return total.toString();
+}
+
+>>>>>>> 2dd0c86
 
 let total = document.querySelector("#total");
 
+/**Updates the calculator display */
 const update = function() {
     total.textContent = currentNumber;
+    console.log("total div: " + total.textContent);
 }
 
 update();
 
+<<<<<<< HEAD
+=======
+//** Run depending on the symbol that was pressed */
+>>>>>>> 2dd0c86
 const operate = function() {
     console.log("previous number is: " + previousNumber);
     console.log("current number is :" + currentNumber);
@@ -24,8 +49,28 @@ const operate = function() {
         case "+":
             currentNumber = add(previousNumber, currentNumber);
             break;
+<<<<<<< HEAD
     
         default:
+=======
+
+        case "x":
+            currentNumber = multiply(previousNumber, currentNumber);
+            break;
+        
+        case "-":
+            currentNumber = substract(previousNumber, currentNumber);
+            break;
+
+        case "\u00F7":
+            currentNumber = divide(previousNumber, currentNumber);
+            console.log("Division running...");
+            break;
+    
+    
+        default:
+            console.log("UH OH! Operate function error!");
+>>>>>>> 2dd0c86
             break;
     }
     console.log("Run operation with " + symbol);
@@ -52,18 +97,32 @@ Array.from(buttons).forEach(button => {
 
             case "clear":
                 clearAll();
+<<<<<<< HEAD
+=======
+                break;
+
+            case "equals":
+                equals();
+>>>>>>> 2dd0c86
                 break;
 
             case "equals":
                 equals();
         
             default:
+                console.log("UH OH! Button press error!");
                 break;
         }
         
     })
 })
 
+<<<<<<< HEAD
+=======
+/**Updates the symbol if a symbol button is pressed and moves the current value
+ * to be stored in the previous value
+ */
+>>>>>>> 2dd0c86
 function updateSymbol(buttonTarget) {
     if (symbol == null) {
         previousNumber = currentNumber;
@@ -78,6 +137,12 @@ function updateSymbol(buttonTarget) {
     }
 }
 
+<<<<<<< HEAD
+=======
+/** If the number is cero make the current number equals the button text if not then, append the button 
+ * text content.
+*/
+>>>>>>> 2dd0c86
 function appendNumber(buttonTarget) {
     if (currentNumber == "0" || currentNumber == "") {
         currentNumber = buttonTarget.textContent;
@@ -86,6 +151,7 @@ function appendNumber(buttonTarget) {
     }
     update();
 }
+<<<<<<< HEAD
 
 function equals() {
     if (previousNumber !== null && symbol !== null) {
@@ -95,6 +161,18 @@ function equals() {
     }
 }
 
+=======
+/** Does the operation and reset the values of the previous number and symbol */
+function equals() {
+    if (previousNumber !== null && symbol !== null) {
+        operate();
+        symbol = null;
+        previousNumber = null;
+    }
+}
+
+/** Resets everything in the programs and updates the display */
+>>>>>>> 2dd0c86
 function clearAll() {
     currentNumber = "0";
     previousNumber = null;
