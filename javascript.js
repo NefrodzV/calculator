@@ -8,8 +8,6 @@ const add =  function(x,y) {
     return total.toString();
 }
 
-<<<<<<< HEAD
-=======
 const multiply = function(x,y) {
     let total = Number(x) * Number(y);
     return total.toString();
@@ -26,7 +24,6 @@ const divide = function(x,y) {
     return total.toString();
 }
 
->>>>>>> 2dd0c86
 
 let total = document.querySelector("#total");
 
@@ -38,10 +35,7 @@ const update = function() {
 
 update();
 
-<<<<<<< HEAD
-=======
 //** Run depending on the symbol that was pressed */
->>>>>>> 2dd0c86
 const operate = function() {
     console.log("previous number is: " + previousNumber);
     console.log("current number is :" + currentNumber);
@@ -49,10 +43,6 @@ const operate = function() {
         case "+":
             currentNumber = add(previousNumber, currentNumber);
             break;
-<<<<<<< HEAD
-    
-        default:
-=======
 
         case "x":
             currentNumber = multiply(previousNumber, currentNumber);
@@ -70,7 +60,6 @@ const operate = function() {
     
         default:
             console.log("UH OH! Operate function error!");
->>>>>>> 2dd0c86
             break;
     }
     console.log("Run operation with " + symbol);
@@ -97,13 +86,10 @@ Array.from(buttons).forEach(button => {
 
             case "clear":
                 clearAll();
-<<<<<<< HEAD
-=======
                 break;
 
             case "equals":
                 equals();
->>>>>>> 2dd0c86
                 break;
 
             case "equals":
@@ -117,17 +103,18 @@ Array.from(buttons).forEach(button => {
     })
 })
 
-<<<<<<< HEAD
-=======
 /**Updates the symbol if a symbol button is pressed and moves the current value
  * to be stored in the previous value
  */
->>>>>>> 2dd0c86
 function updateSymbol(buttonTarget) {
     if (symbol == null) {
         previousNumber = currentNumber;
         currentNumber = "0";
         symbol = buttonTarget.textContent;
+    } else if(symbol != null && currentNumber == "0") {
+        // When a symbol is already pressed but no number has been entered update the symbol
+        symbol = buttonTarget.textContent;
+        console.log("Updating symbol when current number is 0");
     } else {
         operate();
         previousNumber = currentNumber;
@@ -137,12 +124,9 @@ function updateSymbol(buttonTarget) {
     }
 }
 
-<<<<<<< HEAD
-=======
 /** If the number is cero make the current number equals the button text if not then, append the button 
  * text content.
 */
->>>>>>> 2dd0c86
 function appendNumber(buttonTarget) {
     if (currentNumber == "0" || currentNumber == "") {
         currentNumber = buttonTarget.textContent;
@@ -151,17 +135,6 @@ function appendNumber(buttonTarget) {
     }
     update();
 }
-<<<<<<< HEAD
-
-function equals() {
-    if (previousNumber !== null && symbol !== null) {
-        operate();
-        symbol = null;
-        previousNumber = null;
-    }
-}
-
-=======
 /** Does the operation and reset the values of the previous number and symbol */
 function equals() {
     if (previousNumber !== null && symbol !== null) {
@@ -172,7 +145,6 @@ function equals() {
 }
 
 /** Resets everything in the programs and updates the display */
->>>>>>> 2dd0c86
 function clearAll() {
     currentNumber = "0";
     previousNumber = null;
