@@ -92,9 +92,11 @@ Array.from(buttons).forEach(button => {
                 equals();
                 break;
 
-            case "equals":
-                equals();
-        
+            case "percentage":
+                calculatePercent();
+                break;
+
+    
             default:
                 console.log("UH OH! Button press error!");
                 break;
@@ -102,6 +104,11 @@ Array.from(buttons).forEach(button => {
         
     })
 })
+
+function calculatePercent() {
+    currentNumber = currentNumber / 100;
+    update();
+}
 
 /**Updates the symbol if a symbol button is pressed and moves the current value
  * to be stored in the previous value
