@@ -96,6 +96,12 @@ Array.from(buttons).forEach(button => {
                 calculatePercent();
                 break;
 
+            case "decimal":
+                if(!currentNumber.includes(".")) {
+                    currentNumber = currentNumber + ".";
+                    update();
+                }
+                break;
     
             default:
                 console.log("UH OH! Button press error!");
